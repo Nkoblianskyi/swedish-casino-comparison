@@ -27,7 +27,7 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
         setIsOpen(true)
         sessionStorage.setItem("hasSeenModal", "true")
       }
-    }, 3000) // Show after 3 seconds
+    }, 8000) // Show after 3 seconds
 
     return () => clearTimeout(timer)
   }, [])
@@ -78,7 +78,7 @@ function CasinoModalCard({
           <div className="grid grid-cols-3 gap-2 items-center">
             <div className="flex justify-center">
               <div className="relative h-8 w-12 sm:h-12 sm:w-18 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
-                <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-cover" />
+                <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
               </div>
             </div>
             <div className="flex flex-col">
