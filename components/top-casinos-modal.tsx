@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog"
 import Image from "next/image"
-import { Star, Crown } from "lucide-react"
+import { Star, Crown, X } from "lucide-react"
 
 interface Casino {
   name: string
@@ -27,7 +27,7 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
         setIsOpen(true)
         sessionStorage.setItem("hasSeenModal", "true")
       }
-    }, 8000) // Show after 3 seconds
+    }, 3000) // Show after 3 seconds
 
     return () => clearTimeout(timer)
   }, [])
@@ -35,10 +35,14 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[900px] p-0 bg-black/90 border border-secondary/30 w-[95vw] max-w-full">
-        <DialogHeader className="p-2 md:p-4 border-b border-secondary/20">
+        <DialogHeader className="p-2 md:p-4 border-b border-secondary/20 relative">
           <div className="flex items-center justify-center">
             <DialogTitle className="text-lg md:text-2xl font-bold text-secondary">Top Bonusser</DialogTitle>
           </div>
+          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+            <X className="h-4 w-4 text-white" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
         </DialogHeader>
         <div className="p-2 md:p-4 lg:p-6 xl:p-8">
           {/* Desktop layout */}
