@@ -26,11 +26,11 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#DC2626", // Casino Red
+          DEFAULT: "#8B0000", // Dark Red
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#F59E0B", // Casino Gold
+          DEFAULT: "#D4AF37", // Gold (less bright)
           foreground: "#000000",
         },
         destructive: {
@@ -42,11 +42,11 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#059669", // Casino Green
+          DEFAULT: "#006400", // Dark Green
           foreground: "#ffffff",
         },
         premium: {
-          DEFAULT: "#7C3AED", // Casino Purple
+          DEFAULT: "#4B0082", // Indigo (Dark Purple)
           foreground: "#ffffff",
         },
         popover: {
@@ -78,7 +78,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundImage: {
-        "sweden-pattern": "url('/sweden-bg.png')",
+        "casino-bg": "url('/casino-background.png')",
       },
     },
   },

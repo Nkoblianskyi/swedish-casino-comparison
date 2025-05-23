@@ -20,14 +20,14 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
     <div className="relative mt-6 group">
       {isTopRated && (
         <div className="absolute -top-6 left-8 md:left-8 z-30">
-          <div className="bg-secondary text-black px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg animate-pulse">
+          <div className="bg-premium text-white px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg animate-pulse">
             <Crown className="h-4 w-4" />
             TOP 1
           </div>
         </div>
       )}
       <Card
-        className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${isTopRated ? "border-2 border-secondary shadow-md" : ""} hover:border-primary/50 relative`}
+        className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${isTopRated ? "border-2 border-premium shadow-md" : ""} hover:border-primary/50 relative`}
       >
         {/* Make the entire card clickable */}
         <a
@@ -53,7 +53,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
             {/* Name and Bonus */}
             <div className="flex-1 text-center">
               <h3 className="text-xl font-bold">{name}</h3>
-              <p className="text-lg font-semibold text-primary bg-primary/5 border border-primary/20 rounded-md py-1 px-2 inline-block">
+              <p className="text-lg font-semibold text-secondary bg-secondary/10 border border-secondary/30 rounded-md py-1 px-2 inline-block">
                 {bonus}
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
                   Hämta Bonus
                 </a>
               </Button>
-              <span className="text-sm text-primary flex items-center">
+              <span className="text-sm text-accent flex items-center">
                 Besök {name} <ArrowRight className="h-3 w-3 ml-1" />
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
               {/* Content */}
               <div className="flex-1">
                 <h3 className="text-lg font-bold">{name}</h3>
-                <p className="text-sm font-semibold text-primary bg-primary/5 border border-primary/20 rounded-md py-1 px-2 inline-block mb-2">
+                <p className="text-sm font-semibold text-secondary bg-secondary/10 border border-secondary/30 rounded-md py-1 px-2 inline-block mb-2">
                   {bonus}
                 </p>
 
@@ -140,7 +140,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
             </Button>
 
             <div className="text-center">
-              <span className="text-sm text-primary flex items-center justify-center">
+              <span className="text-sm text-accent flex items-center justify-center">
                 Besök {name} <ArrowRight className="h-3 w-3 ml-1" />
               </span>
             </div>

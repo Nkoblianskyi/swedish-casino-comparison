@@ -76,7 +76,7 @@
 }
 
 .bg-casino-gradient {
-  background: linear-gradient(135deg, #1e88e5, #26a69a);
+  background: linear-gradient(135deg, #8b0000 0%, #4b0082 50%, #d4af37 100%);
 }
 
 /* Custom media query for the modal */
@@ -85,5 +85,15 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

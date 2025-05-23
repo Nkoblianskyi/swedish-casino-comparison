@@ -10,7 +10,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "SvenskaToppCasinos - Topp 10 Bästa Online Casino i Sverige",
   description: "Jämför de bästa onlinecasinona i Sverige med oberoende recensioner, bonusar och betyg.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -21,9 +20,9 @@ export default function RootLayout({
   return (
     <html lang="sv">
       <body className={inter.className}>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col relative">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 relative">{children}</main>
             <Footer />
           </div>
       </body>
