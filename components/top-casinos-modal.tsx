@@ -149,7 +149,7 @@ function MobileCasinoCard({
         <div className="flex items-center gap-2">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="relative h-12 w-16 overflow-hidden rounded">
+            <div className="relative h-12 w-16 overflow-hidden rounded bg-white">
               <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
             </div>
           </div>
