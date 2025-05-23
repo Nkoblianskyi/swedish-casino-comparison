@@ -35,15 +35,23 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-[900px] p-0 bg-gradient-to-r from-[#e0f7fa] to-[#e8f5e9] w-[95vw] max-w-full">
-        <DialogHeader className="p-2 sm:p-4 border-b">
+        <DialogHeader className="p-2 md:p-4 border-b">
           <div className="flex items-center justify-center">
-            <DialogTitle className="text-lg sm:text-2xl font-bold">Top Bonusser</DialogTitle>
+            <DialogTitle className="text-lg md:text-2xl font-bold">Top Bonusser</DialogTitle>
           </div>
         </DialogHeader>
-        <div className="p-2 sm:p-4 lg:p-6 xl:p-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-4 lg:gap-6 xl:gap-8">
+        <div className="p-2 md:p-4 lg:p-6 xl:p-8">
+          {/* Desktop layout */}
+          <div className="hidden md:grid md:grid-cols-3 gap-4 lg:gap-6 xl:gap-8">
             {casinos.slice(0, 3).map((casino, index) => (
-              <CasinoModalCard key={casino.name} {...casino} isTopRated={index === 0} />
+              <DesktopCasinoCard key={casino.name} {...casino} isTopRated={index === 0} />
+            ))}
+          </div>
+
+          {/* Mobile layout */}
+          <div className="md:hidden space-y-2">
+            {casinos.slice(0, 3).map((casino, index) => (
+              <MobileCasinoCard key={casino.name} {...casino} isTopRated={index === 0} />
             ))}
           </div>
         </div>
@@ -52,7 +60,7 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
   )
 }
 
-function CasinoModalCard({
+function DesktopCasinoCard({
   name,
   logo,
   bonus,
@@ -108,6 +116,69 @@ function CasinoModalCard({
           <p className="text-[10px] text-muted-foreground text-center mt-2">
             18+. Gäller nya spelare. Min. 100 kr. 20x omsättningskrav. Regler & villkor gäller.
           </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MobileCasinoCard({
+  name,
+  logo,
+  bonus,
+  rating,
+  reviews,
+  link,
+  isTopRated = false,
+}: Casino & { isTopRated?: boolean }) {
+  return (
+    <div className="relative group">
+      {isTopRated && (
+        <div className="absolute -top-2 left-2 z-50">
+          <div className="bg-yellow-400 text-black px-2 py-0.5 rounded-full font-bold text-xs flex items-center gap-1 shadow-md">
+            <Crown className="h-3 w-3" />
+            TOP 1
+          </div>
+        </div>
+      )}
+      <div
+        className={`bg-white rounded-lg overflow-hidden shadow-sm border ${isTopRated ? "border-yellow-400" : "border-gray-100"} p-2`}
+      >
+        <div className="flex items-center gap-2">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <div className="relative h-12 w-16 overflow-hidden rounded">
+              <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 min-w-0">
+            <h3 className="text-sm font-bold truncate">{name}</h3>
+            <p className="text-xs text-muted-foreground truncate">{bonus}</p>
+            <div className="flex items-center gap-1 mt-0.5">
+              <div className="flex">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-2.5 w-2.5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="font-medium text-xs">{rating.toFixed(1)}</span>
+              <span className="text-[10px] text-muted-foreground">({reviews})</span>
+            </div>
+          </div>
+
+          {/* Button */}
+          <div className="flex-shrink-0">
+            <Button
+              asChild
+              size="sm"
+              className={`h-8 px-3 text-xs ${isTopRated ? "bg-yellow-500 hover:bg-yellow-600 text-black" : "bg-secondary hover:bg-secondary/90"}`}
+            >
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                Bonus
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
