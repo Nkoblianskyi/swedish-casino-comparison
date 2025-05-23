@@ -32,7 +32,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
           <div className="hidden md:grid md:grid-cols-4 gap-4 items-center">
             {/* First column - Logo */}
             <div className="flex-shrink-0">
-              <div className="relative h-24 w-24 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
+              <div className="relative h-32 w-32 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
                 <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
               </div>
             </div>
