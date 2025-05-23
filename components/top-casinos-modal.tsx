@@ -34,7 +34,7 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-[900px] p-0 bg-gradient-to-r from-[#e0f7fa] to-[#e8f5e9] w-[95vw] max-w-full">
+      <DialogContent className="sm:max-w-[900px] p-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 w-[95vw] max-w-full">
         <DialogHeader className="p-2 md:p-4 border-b">
           <div className="flex items-center justify-center">
             <DialogTitle className="text-lg md:text-2xl font-bold">Top Bonusser</DialogTitle>
@@ -73,14 +73,14 @@ function DesktopCasinoCard({
     <div className="relative mt-6 group">
       {isTopRated && (
         <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-50">
-          <div className="bg-yellow-400 text-black px-3 py-1 rounded-full font-bold text-sm flex items-center gap-1 shadow-md animate-pulse">
+          <div className="bg-premium text-white px-3 py-1 rounded-full font-bold text-sm flex items-center gap-1 shadow-md animate-pulse">
             <Crown className="h-4 w-4" />
             TOP 1
           </div>
         </div>
       )}
       <div
-        className={`bg-white rounded-lg overflow-hidden shadow-sm border-2 ${isTopRated ? "border-yellow-400" : "border-gray-100"} transition-all duration-300 hover:shadow-lg p-4`}
+        className={`bg-white rounded-lg overflow-hidden shadow-sm border-2 ${isTopRated ? "border-premium" : "border-gray-100"} transition-all duration-300 hover:shadow-lg p-4`}
       >
         <div className="flex flex-col items-center">
           <div className="w-full mb-4">
@@ -91,13 +91,15 @@ function DesktopCasinoCard({
 
           <div className="w-full text-center mb-2">
             <h3 className="text-xl font-bold">{name}</h3>
-            <p className="text-sm text-muted-foreground">{bonus}</p>
+            <p className="text-sm font-semibold text-secondary bg-secondary/10 border border-secondary/30 rounded-md py-1 px-2 inline-block mb-2">
+              {bonus}
+            </p>
           </div>
 
           <div className="flex items-center justify-center gap-1 mb-4">
             <div className="flex">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="h-4 w-4 fill-secondary text-secondary" />
               ))}
             </div>
             <span className="font-medium text-sm">{rating.toFixed(1)}</span>
@@ -106,7 +108,7 @@ function DesktopCasinoCard({
 
           <Button
             asChild
-            className={`w-full ${isTopRated ? "bg-yellow-500 hover:bg-yellow-600 text-black" : "bg-secondary hover:bg-secondary/90"}`}
+            className={`w-full ${isTopRated ? "bg-premium hover:bg-premium/90 text-white" : "bg-secondary hover:bg-secondary/90 text-black"}`}
           >
             <a href={link} target="_blank" rel="noopener noreferrer">
               Hämta Bonus
