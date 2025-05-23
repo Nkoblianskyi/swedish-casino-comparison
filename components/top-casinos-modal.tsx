@@ -77,7 +77,7 @@ function CasinoModalCard({
         <div className="p-2">
           <div className="grid grid-cols-3 gap-2 items-center">
             <div className="flex justify-center">
-              <div className="relative h-16 w-24 sm:h-20 sm:w-32 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
+              <div className="relative h-8 w-12 sm:h-12 sm:w-18 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
                 <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-cover" />
               </div>
             </div>
