@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { Star, Crown } from "lucide-react"
+import { Star, Crown, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -17,7 +17,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
   return (
     <div className="relative mt-6 group">
       {isTopRated && (
-        <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-30">
+        <div className="absolute -top-6 left-8 z-30">
           <div className="bg-yellow-400 text-black px-4 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg animate-pulse">
             <Crown className="h-4 w-4" />
             TOP 1
@@ -28,91 +28,54 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
         className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${isTopRated ? "border-2 border-yellow-400 shadow-md" : ""} hover:border-primary/50`}
       >
         <CardContent className="p-4">
-          {/* Desktop layout - 4 columns */}
-          <div className="hidden md:grid md:grid-cols-4 gap-4 items-center">
-            {/* First column - Logo */}
+          <div className="flex items-center gap-4 mb-2">
+            {/* Logo */}
             <div className="flex-shrink-0">
-              <div className="relative h-32 w-32 overflow-hidden rounded-lg transition-transform duration-300 group-hover:scale-102">
+              <div className="relative h-20 w-40 overflow-hidden rounded-lg">
                 <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
               </div>
             </div>
 
-            {/* Second column - Name and Bonus */}
-            <div className="flex flex-col">
-              <h3 className="text-xl font-bold transition-colors duration-300 group-hover:text-primary">{name}</h3>
-              <p className="text-sm text-muted-foreground">{bonus}</p>
+            {/* Name and Bonus */}
+            <div className="flex-1 text-center">
+              <h3 className="text-xl font-bold">{name}</h3>
+              <p className="text-lg text-muted-foreground">{bonus}</p>
             </div>
 
-            {/* Third column - Rating and Reviews */}
+            {/* Rating */}
             <div className="flex flex-col items-center gap-1">
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-yellow-400 text-yellow-400 transition-transform duration-300 group-hover:scale-102"
-                    />
-                  ))}
-                </div>
-                <span className="font-medium">{rating.toFixed(1)}</span>
+              <div className="flex">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
               </div>
-              <span className="text-xs text-muted-foreground">({reviews})</span>
+              <div className="flex items-center gap-2">
+                <span className="text-xl font-bold">{rating.toFixed(1)}</span>
+                <span className="text-xs text-muted-foreground">Reviews ({reviews})</span>
+              </div>
             </div>
 
-            {/* Fourth column - Button */}
-            <div>
-              <Button
-                asChild
-                className={`w-full transition-all duration-300 transform hover:scale-102 ${isTopRated ? "bg-yellow-500 hover:bg-yellow-600 text-black hover:shadow-[0_0_10px_rgba(234,179,8,0.5)]" : "bg-secondary hover:bg-secondary/90 hover:shadow-[0_0_10px_rgba(38,166,154,0.5)]"}`}
-              >
+            {/* Button */}
+            <div className="flex flex-col items-center gap-1">
+              <Button asChild className="px-6 py-2 h-auto text-lg bg-yellow-500 hover:bg-yellow-600 text-black">
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   Hämta Bonus
                 </a>
               </Button>
-            </div>
-          </div>
-
-          {/* Mobile layout - stacked */}
-          <div className="md:hidden space-y-4">
-            {/* Mobile first row - Logo and Name/Bonus */}
-            <div className="flex items-center gap-3">
-              <div className="flex-shrink-0">
-                <div className="relative h-16 w-16 overflow-hidden rounded-lg">
-                  <Image src={logo || "/placeholder.svg"} alt={name} fill className="object-contain" />
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold">{name}</h3>
-                <p className="text-sm text-muted-foreground">{bonus}</p>
-              </div>
-            </div>
-
-            {/* Mobile second row - Rating and Button */}
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-1">
-                <div className="flex">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <span className="font-medium text-sm">{rating.toFixed(1)}</span>
-                <span className="text-xs text-muted-foreground">({reviews})</span>
-              </div>
-              <Button
-                asChild
-                size="sm"
-                className={`transition-all duration-300 ${isTopRated ? "bg-yellow-500 hover:bg-yellow-600 text-black" : "bg-secondary hover:bg-secondary/90"}`}
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-primary hover:underline flex items-center"
               >
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                  Hämta Bonus
-                </a>
-              </Button>
+                Besök {name} <ArrowRight className="h-3 w-3 ml-1" />
+              </a>
             </div>
           </div>
 
-          {/* Disclaimer - same for both layouts */}
-          <div className="mt-4 pt-4 border-t">
-            <p className="text-xs text-muted-foreground text-center">
+          {/* Disclaimer */}
+          <div className="mt-2">
+            <p className="text-xs text-muted-foreground">
               18+. Gäller nya spelare vid första insättningen min. 100 kr. (100% bonus upp till max 3000 kr + 150
               gratisspins i Pirots 3). 20x omsättningskrav på insättning för att motta bonusen. Giltigt i 60 dagar.
               Regler & villkor gäller. stodlinjen.se - spelpaus.se. Spela ansvarsfullt.
