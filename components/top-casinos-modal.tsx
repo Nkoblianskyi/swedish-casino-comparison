@@ -1,11 +1,10 @@
-
 "use client"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { X, Star, Crown } from "lucide-react"
 import Image from "next/image"
+import { Star, Crown } from "lucide-react"
 
 interface Casino {
   name: string
@@ -20,34 +19,27 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
+    // Show modal after a short delay
     const timer = setTimeout(() => {
+      // Check if user has already seen the modal
       const hasSeenModal = sessionStorage.getItem("hasSeenModal")
       if (!hasSeenModal) {
         setIsOpen(true)
         sessionStorage.setItem("hasSeenModal", "true")
       }
-    }, 8000)
+    }, 8000) // Show after 3 seconds
 
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="relative sm:max-w-[900px] p-0 bg-black/90 border border-secondary/30 w-[95vw] max-w-full">
-        {/* Custom close button */}
-        <button
-          className="absolute right-2 top-2 text-white hover:text-secondary transition-colors z-50"
-          onClick={() => setIsOpen(false)}
-        >
-          <X className="w-6 h-6" />
-        </button>
-
+      <DialogContent className="sm:max-w-[900px] p-0 bg-black/90 border border-secondary/30 w-[95vw] max-w-full">
         <DialogHeader className="p-2 md:p-4 border-b border-secondary/20">
           <div className="flex items-center justify-center">
             <DialogTitle className="text-lg md:text-2xl font-bold text-secondary">Top Bonusser</DialogTitle>
           </div>
         </DialogHeader>
-
         <div className="p-2 md:p-4 lg:p-6 xl:p-8">
           {/* Desktop layout */}
           <div className="hidden md:grid md:grid-cols-3 gap-4 lg:gap-6 xl:gap-8">
