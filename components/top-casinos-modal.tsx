@@ -27,7 +27,7 @@ export default function TopCasinosModal({ casinos }: { casinos: Casino[] }) {
         setIsOpen(true)
         sessionStorage.setItem("hasSeenModal", "true")
       }
-    }, 3000) // Show after 3 seconds
+    }, 8000) // Show after 3 seconds
 
     return () => clearTimeout(timer)
   }, [])
