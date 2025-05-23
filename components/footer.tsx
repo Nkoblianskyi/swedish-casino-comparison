@@ -38,9 +38,6 @@ export default function Footer() {
               <Link href="/om-oss" className="text-sm hover:underline">
                 Om oss
               </Link>
-              <Link href="/kontakta-oss" className="text-sm hover:underline">
-                Kontakta oss
-              </Link>
               <Link href="/tjanstevillkor" className="text-sm hover:underline">
                 Tjänstevillkor
               </Link>

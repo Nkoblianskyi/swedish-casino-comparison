@@ -17,9 +17,6 @@ export default function Header() {
           <Link href="/om-oss" className="text-sm font-medium text-white hover:underline">
             Om oss
           </Link>
-          <Link href="/kontakta-oss" className="text-sm font-medium text-white hover:underline">
-            Kontakta oss
-          </Link>
         </nav>
         <Button asChild className="hidden md:inline-flex bg-white text-primary hover:bg-white/90">
           <Link href="/#top-casinos">Jämför Casinon</Link>

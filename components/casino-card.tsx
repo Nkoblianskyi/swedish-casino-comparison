@@ -39,7 +39,7 @@ export default function CasinoCard({ name, logo, bonus, rating, reviews, link, i
             {/* Name and Bonus */}
             <div className="flex-1 text-center">
               <h3 className="text-xl font-bold">{name}</h3>
-              <p className="text-lg text-muted-foreground">{bonus}</p>
+              <p className="text-lg text-yellow-300 text-muted-foreground">{bonus}</p>
             </div>
 
             {/* Rating */}
