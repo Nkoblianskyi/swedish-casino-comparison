@@ -26,12 +26,12 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1e88e5", // Blue
+          DEFAULT: "#DC2626", // Casino Red
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#26a69a", // Teal/Green
-          foreground: "#ffffff",
+          DEFAULT: "#F59E0B", // Casino Gold
+          foreground: "#000000",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -42,7 +42,11 @@ const config = {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "#4db6ac", // Lighter teal
+          DEFAULT: "#059669", // Casino Green
+          foreground: "#ffffff",
+        },
+        premium: {
+          DEFAULT: "#7C3AED", // Casino Purple
           foreground: "#ffffff",
         },
         popover: {
@@ -72,6 +76,9 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundImage: {
+        "sweden-pattern": "url('/sweden-bg.png')",
       },
     },
   },
